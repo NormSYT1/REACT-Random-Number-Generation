@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <h1 className="App-header">Random Number Generation</h1>
 
-      <div className='container'>d
+      <div className='container'>
         <p>Random Number: {random}</p>
 
         <div className="row">
