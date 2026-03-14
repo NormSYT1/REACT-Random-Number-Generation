@@ -1,23 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
 
 function App() {
+  const [min,setMin] = useState()
+  const [max,setMax] = useState()
+  const [random, setRandom] = useState()
+
+  const changeMin = (e) =>{
+    setMin(Number(e.target.value))
+  }
+
+  const changeMax = (e) =>{
+    setMax(Number(e.target.value))
+  }
+
+  const generateRandom = () =>{
+     if(max>=min){
+        setRandom(Math.floor(Math.random()*(max-min +1) + min))
+     }
+     else{
+       alert("Maksimum sayı minimum sayıdan küçük olamaz!");
+       return;
+     }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="App-header">Random Number Generation</h1>
+
+      <div className='container'>d
+        <p>Random Number: {random}</p>
+
+        <div className="row">
+          <label>Minimum Number</label>
+          <input type='number' placeholder='Enter min number' onChange={changeMin}/>
+        </div>
+
+        <div className="row">
+          <label>Maximum Number</label>
+          <input type='number' placeholder='Enter max number' onChange={changeMax}/>
+        </div>
+      
+        <button onClick={generateRandom}>
+          Give a random number
+        </button>
+      </div>
     </div>
   );
 }
